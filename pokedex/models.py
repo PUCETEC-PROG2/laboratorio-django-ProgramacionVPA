@@ -9,4 +9,9 @@ class Pokemon(models.Model):
     
     def __str__(self):
         return self.name
-
+    
+## Entrenador
+## Nombre
+## Apellido
+## Nivel
+## Fecha de nacimiento DateField()
