@@ -2,13 +2,30 @@
 {% block title %}Página inicial{% endblock title %}Página inicial
 {% block content %}
   <h3>Pokemons</h3>
-    <ul class="list-group">
+  <a href="{% url "pokedex:add_pokemon" %}">Añadir Pokemon</a>
+  <div class="row">
       {% for pokemon in pokemons %}
-      <li class="list-group-item">
-          <a href="{{pokemon.id}}">{{ pokemon | capfirst }}</a>
-      </li>
+      <div class="col-sm-4">
+        <br>
+        <div class="card" style="width: 100%;">
+          <img src="{{pokemon.picture.url}}" class="card-img-top" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ pokemon | capfirst }}</h5>
+            <p class="card-text">Altura {{pokemon.height}}</p>
+            <a href="{{pokemon.id}}" class="btn btn-primary">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+            <a href="edit_pokemon/{{pokemon.id}}" class="btn btn-primary">
+              <i class="fa-solid fa-pencil"></i>
+            </a>
+            <a href="delete_pokemon/{{pokemon.id}}" class="btn btn-danger">
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          </div>
+        </div>
+      </div>
       {% endfor %}
-    </ul>
+  </div>
   <h3>Entrenadores</h3>
   <ul class="list-group">
     {% for trainer in trainers %}
