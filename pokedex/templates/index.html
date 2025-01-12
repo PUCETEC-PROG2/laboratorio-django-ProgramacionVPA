@@ -2,7 +2,9 @@
 {% block title %}Página inicial{% endblock title %}Página inicial
 {% block content %}
   <h3>Pokemons</h3>
-  <a href="{% url "pokedex:add_pokemon" %}">Añadir Pokemon</a>
+  {% if user.is_authenticated %}
+    <a href="{% url "pokedex:add_pokemon" %}">Añadir Pokemon</a>
+  {% endif %}
   <div class="row">
       {% for pokemon in pokemons %}
       <div class="col-sm-4">
@@ -15,12 +17,14 @@
             <a href="{{pokemon.id}}" class="btn btn-primary">
               <i class="fa-solid fa-eye"></i>
             </a>
-            <a href="edit_pokemon/{{pokemon.id}}" class="btn btn-primary">
-              <i class="fa-solid fa-pencil"></i>
-            </a>
-            <a href="delete_pokemon/{{pokemon.id}}" class="btn btn-danger">
-              <i class="fa-solid fa-trash"></i>
-            </a>
+            {% if user.is_authenticated %}
+              <a href="edit_pokemon/{{pokemon.id}}" class="btn btn-primary">
+                <i class="fa-solid fa-pencil"></i>
+              </a>
+              <a href="delete_pokemon/{{pokemon.id}}" class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i>
+              </a>
+            {% endif %}
           </div>
         </div>
       </div>
