@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Página inicial{% endblock title %}Página inicial
+{% block title %}Página inicial{% endblock title %}
 {% block content %}
   <h3>Pokemons</h3>
   {% if user.is_authenticated %}
@@ -30,13 +30,5 @@
       </div>
       {% endfor %}
   </div>
-  <h3>Entrenadores</h3>
-  <ul class="list-group">
-    {% for trainer in trainers %}
-    <li class="list-group-item">
-        <a href="trainer/{{trainer.id}}">{{ trainer | capfirst }}</a>
-    </li>
-    {% endfor %}
-  </ul>
 {% endblock content %}
 
