@@ -14,10 +14,13 @@
             </div>
             <ul class="nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="/">Pokemons</a>
+                    <a class="nav-link" href="/">Inicio</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url "pokedex:only_pokemons" %}">Pokemons</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url "pokedex:trainers" %}">Entrenadores</a>
+                  <a class="nav-link" href="{% url "pokedex:only_trainers" %}">Entrenadores</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
